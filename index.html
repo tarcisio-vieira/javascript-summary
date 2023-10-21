@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> Aprendendo Java Script </title>
+	
+		<script type="text/javascript" src="script.js"></script>
+	
+	</head>
+	
+	<body>
+
+		<h1>Aprendendo Java Script</h1>
+
+
+		<p>1 - Usando href</p>
+		<button onclick="window.location.href='https://google.com.br'">ir ao google</button>
+		<button onclick="window.location.href='contato.html'">Contato</button>
+		<button onclick="window.location.href=window.location.href">Atualizar a Página</button>
+
+		<p>2 - Usando id e getElementById</p>
+		<div id="area1">
+			Bem vindo ...				
+		</div>
+		<button onclick="document.getElementById('area1').innerHTML 
+		= 'Bem vindo  ' + prompt('Qual seu nome?') ;">Entrar</button>
+
+		<p>3 - Mudando o nome do botão</p>
+		<button onclick="this.innerHTML 
+		= prompt('Nome do botão?') ;">Botão muda nome no prompt</button>
+
+
+		<h2>Funções</h2>
+		<p>1 - Criando Funções</p>
+
+		<div id="area">
+			Bem vindo ... 				
+		</div>
+		<button onclick="entrar()">Nome</button>
+
+
+		<!--Nome e Sobre Nome-->
+		<p>2 - Nome e Sobrenome</p>
+
+		<div id="area2">
+			Bem vindo ... 				
+		</div>
+		<button onclick="entrar2()">Nome e Sobrenome</button>
+
+		<p>
+			<br/>// Criando Funções
+			<br/>
+			<br/>function entrar(){
+			<br/>	alert('Informando o Nome');
+			<br/>
+			<br/>	var area = document.getElementById('area');
+			<br/>	var texto = prompt('Digite o seu nome');
+			<br/>
+			<br/>	if(texto == '' || texto == null){
+			<br/>		alert('Digite seu nome!');
+			<br/>		area.innerHTML = 'Bem Vindo ...';
+			<br/>	} else {
+			<br/>	area.innerHTML = 'Bem vindo ' + texto ;
+			<br/>	}    
+			<br/>}
+			<br/>
+			<br/>// Nome e sobrenome
+			<br/>
+			<br/>var valor = "Teste";
+			<br/>
+			<br/>function entrar2(){
+			<br/>	alert('Informando Nome e Sobrenome ');
+			<br/>
+			<br/>	var area2 = document.getElementById('area2');
+			<br/>	var nome = prompt('Digite o seu nome');
+			<br/>	var sobreNome = prompt('Digite o seu sobrenome');
+			<br/>
+			<br/>	area2.innerHTML = valor + ' ' + nome + ' ' + sobreNome ;
+			<br/>
+			<br/>	alert('Informando Nome e Sobrenome ');
+			<br/>  
+			<br/>}
+		</p>
+
+
+		<!--Arrays-->
+		<h2>Arrays</h2>
+		<p>1 - Array / listas </p>
+		<p>
+			1.1 criar a lista:
+			<br/>
+			var lista = [ "Joao", "Pedro", "Lucas", 15]
+			<br/>
+			<br/>
+			1.2 - pesquisar na lista:
+			<br/>
+			lista.indexOf("Lucas") reusltado=2  ou lista.indexOf("Bartolomeu") resultado=-1
+			<br/>
+			<br/>
+			1.3 removendo o último:
+			<br/>lista.pop(); 
+			15
+			<br/>
+			<br/>
+			1.4 removendo o primeiro:
+			<br/>lista.shift();
+			'Tarcisio'			
+			<br/>
+			<br/>
+			1.5 Alterando o conteúdo do índice
+			<br/>
+			lista[0] = 'João da Silva';
+			'João da Silva'		
+			<br/>
+			<br/>
+			1.6 Adicionando item na lista					
+			<br/>
+			lista.push('Jose')
+			5
+			<br/>
+			<br/>
+			1.7 Comparação			
+			<br/>if(lista.indexOf("Jose") > -1){			
+			<br/>	alert("item enontrado com sucesso!");			
+			<br/>}else {				
+			<br/>alert("Não está na lista!");			
+			<br/>}
+		</p>
+
+		<!--Loops-->
+		<h2>Loops</h2>
+		<p>1 - <b> while </b>
+		<br/>
+		<br/>valores separados sendo 1 dentro do parenteses:
+		
+		<br/>
+<textarea rows="14" cols="100%">
+
+	x=0;
+
+	while(x < 10){
+		document.write("<br/> O valor é: " + x);
+		x++;
+	}
+
+
+	2 - <b>for</b>
+	
+	3 valores dentro do parenteses:
+	for(a=0; a'<'10; a++){  resultado aqui: document.write("<br/> O valor é: " + a);  } 
+</textarea>
+
+<br/>
+		<button onclick="loopRepeticao()">Aciona loop de repetição for e visualiza no alert</button>
+		<p>
+			<br/> function loopRepeticao(){
+			<br/>	for(a = 0 ; a<3; a++){
+			<br/>	   alert('no loop e for o valor de a é igual : ' + a)
+			<br/>}
+			<br/> }
+		</p>
+
+
+		<br/>
+		<br/> 3 - <b>switch</b>
+		<br/> 
+<textarea rows="21" cols="100%">
+
+	x = 0;
+	
+	switch(x){
+	
+	case 0:
+		alert('x vale 0!');
+		break;
+	
+	case 1:
+		alert('x vale 1!');
+		break;
+	
+	case 2:
+		alert('x vale 2!');
+		break;
+	
+	default:
+		alert('default é usado em casos que nao existem nos cases acima!');
+		break;
+</textarea>
+
+		<!--Temporizadores-->
+		<h2>Temporização</h2>
+		Executa atualização na tela indefinidamente exemplo: de 1 em 1 segundo atualiza o valor na página.
+		<br/> Outro exemplo é executar uma ação após um tempo determinado 
+		<br/> 
+<textarea rows="22" cols="100%">
+
+	coloca no arquivo script.js  a function
+
+	function acao(){
+		document.write(Executando ... <br/>");
+	}
+ 	
+	//Executa de tempo em tempo automaticamente:
+	setInterval(acao. 1000);
+
+	// Executa a ação após 3 segundos:
+	setTimeout(acao , 3000);
+
+ 	// Executa a ação infinitamente após 3 segundos:
+ 	setTimeout(setInterval(acao, 1000) , 3000);
+
+	// Atribuir uma variável para poder parar de executar com clearInterval
+	 var timer = setInterval(acao , 1000);
+	 // no console para de exucutar com clearInterval(timer);
+
+</textarea>
+
+<!--Cookies e Sessions-->
+<h2>Cookies e Sessions</h2>
+<textarea rows="22" cols="100%">
+// Cookies são valores que salva no navegador do usuário
+// Sessões funciona da mesma forma porém quando fecha o navegador finaliza, é temporário e perde os dados.
+// WEB STORAGE
+
+localStorage   = 
+Funciona parecido com o Cookies e pode fechar o navegador e abrir que aisna estará com o dado acessível>
+
+	
+sessionStorage =
+Funciona só enquanto o navegador está aberto
+
+Aula Sessão 3 do item 16
+
+
+</textarea>
+
+
+
+
+
+
+	</body>
+	
+</html>	
