@@ -7,7 +7,6 @@ var nomeComleto = "Tarcisio Vieira";
 Comentario em java script
 */
 
-
 // Criando Funções
 
 function entrar(){
@@ -59,3 +58,16 @@ function loopRepeticao(){
 
 //var timer = setInterval(acao , 1000);
 // no console para de exucutar com clearInterval(timer);
+
+function cadastrar(usuarios, ...novosusuarios){
+
+let totalusuarios = [
+    ...usuarios,
+    ...novosusuarios
+];
+
+console.log(totalUsuarios);
+}
+
+let usuario = ["matheus","joao"];
+let novosUsuario = [usuarios, "henrique", "Lucas"];

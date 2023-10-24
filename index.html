@@ -12,7 +12,6 @@
 
 		<h1>Aprendendo Java Script</h1>
 
-
 		<p>1 - Usando href</p>
 		<button onclick="window.location.href='https://google.com.br'">ir ao google</button>
 		<button onclick="window.location.href='contato.html'">Contato</button>
@@ -134,7 +133,7 @@
 		<br/>valores separados sendo 1 dentro do parenteses:
 		
 		<br/>
-<textarea rows="14" cols="100%">
+<textarea rows="9" cols="100%">
 
 	x=0;
 
@@ -143,13 +142,20 @@
 		x++;
 	}
 
-
-	2 - <b>for</b>
-	
-	3 valores dentro do parenteses:
-	for(a=0; a'<'10; a++){  resultado aqui: document.write("<br/> O valor é: " + a);  } 
 </textarea>
 
+<p>2 - <b> For </b>
+<textarea rows="9" cols="100%">
+são 3 valores dentro do parenteses:
+for(a=0; a'<'10; a++){  resultado aqui: document.write("<br/> O valor é: " + a);  } 
+
+Exemplo de lista:
+
+for (var i in lista){
+	console.log(lista[i]);
+} 
+</textarea>
+<img src="./img-forLista.png"/>
 <br/>
 		<button onclick="loopRepeticao()">Aciona loop de repetição for e visualiza no alert</button>
 		<p>
@@ -216,29 +222,276 @@
 </textarea>
 
 <!--Cookies e Sessions-->
-<h2>Cookies e Sessions</h2>
-<textarea rows="22" cols="100%">
+<h2>WEB STORAGE - Cookies e Sessions</h2>
+<textarea rows="40" cols="100%">
 // Cookies são valores que salva no navegador do usuário
 // Sessões funciona da mesma forma porém quando fecha o navegador finaliza, é temporário e perde os dados.
 // WEB STORAGE
 
-localStorage   = 
+1 - localStorage   = 
 Funciona parecido com o Cookies e pode fechar o navegador e abrir que aisna estará com o dado acessível>
-
 	
-sessionStorage =
-Funciona só enquanto o navegador está aberto
+2 - sessionStorage =
+Funciona só enquanto o navegador está aberto e tem o mesmo código do localStorage
+exemplo: sessionStorage.name = "João"
 
-Aula Sessão 3 do item 16
 
+1 - localStorage
+incluir e mudar 
+localStorage.setItem("nome", "Joao");
+undefined
+localStorage.getItem("nome");
+'Joao'
 
+//remover
+localStorage.removeItem("nome")
+undefined
+localStorage.getItem("nome");
+
+//jeito mais pratico para cadastrar e pegar
+localStorage.nome = "Joaquim"
+'Joaquim'
+
+localStorage.nome
+'Joaquim'
+
+para remover é da mesma forma acima demonstrada.
+
+// listas
+// é possível salvar listas também
+localStorage.lista = ["Francisco","Maria", "Jorge", "Afonso"]
 </textarea>
 
 
+<!--Variárieis-->
+<h1>Variáveis</h1>
+<h2>Diferença entre var , let  e const </h2>
+<textarea rows="6" cols="100%">
+
+A diferença entre var e let é o escopo da variável. 
+
+No exemplo abaixo ambas as declarações estão dentro
+de um if mas somente a var pode ser acessada fora do escopo do if.
+</textarea>
+<img src="./img-escopoVarLet.png"/>
+<br/>
+A const é constante e o valor da variável nao muda. 
+<br/>
+Exemplo:  const idade = 43; 
+<br/> 
+o valor de idade não permite mudar
+
+<!--Strings-->
+<h1>Concatenando e trabalhando com Strings dinâmicas</h1>
+<textarea rows="10" cols="100%">
+
+usando crase (acento)
+misturando string com variável
+let nome = "Matheus"
+let sobrenome = "Fraga"
+let pessoa = `Meu nome é : ${nome} ${sobrenome}` 
+pessoa
+'Meu nome é : Matheus Fraga'
+
+</textarea>
+
+<!--Objetos-->
+<h1>19 - Usar desconstrução em objetos e arrays</h1>
+
+<textarea rows="42" cols="100%">
+
+	Criando um objeto chamado pessoa
+
+poderia ser por var ou let mas neste exemplo por const mesmo:
+
+const pessoa = {
+    nome: "Matheus",
+    sobrenome: "Fraga",  
+    idade: 10,
+    cargo: "Desenvolvedor"
+};
+
+para desconstruir o objeto e criar uma variável do nome fazer assim:
+let  {nome} = pessoa
+
+para pegar idade e cargo juntos:  let {idade, cargo} = pessoa;
+cargo
+'Desenvolvedor'
+
+ou criar nova variáriel com o valor antigo de cargo:
+
+let { cargo:programador } = pessoa
+programador
+'Desenvolvedor'
+
+Arrays seguem o mesmo padrão mas com a posição do array:
+let pessoa2 = ['Matheus' , 'Fraga' , 10]
+let [nome,sobrenome,idade] = pessoa2;
+nome
+'Matheus'
+sobrenome
+'Fraga'
+idade
+10
+
+também pode ser se com a mudança do nome de variável:
+let [primeiroNome, segundoNome] = pessoa2 ;
+primeiroNome
+'Matheus'
+segundoNome
+'Fraga'
+</textarea>
 
 
-
-
-	</body>
+<!--Spread Operator-->
+<h1>20 - Spread Operator</h1>
+consiste em juntar valores de variáveis através de ...
+<br/>
+<img src="./img-spreadoperator.png"/>
+<br/>
+caso não colocasse os ... a variável  números teria uma adição do array "primeiros".
+<br/>
+<br/>
+Outro exemplo é a junção de dados para um objeto:
+<br/>
+<img src="./img-spreadoperator2.png"/>
+<br/>
+Os dados passam a ser o objeto novaPessoa também.
+<br/>
+<textarea rows="12" cols="100%">
 	
+novaPessoa
+{nome: 'Matheus', sobrenome: 'Fraga', idade: 10, cargo: 'Desenvolvedor', telefone: '984563214500', …}
+cargo: "Desenvolvedor"
+cidade: "Rio de Janeiro"
+idade: 10
+nome: "Matheus"
+sobrenome: "Fraga"
+telefone: "984563214500"
+[[Prototype]]:Object
+
+</textarea>
+<br/>
+este mecanismo é muito utilizado quando é necessário reaproveitar dados para uma mesma operação.
+<br/>
+outro exemplo com function:
+<br/>
+a função cadastroPessoa é acionada recebendo os valores passados na variavel info e ao mesmo tempo retorna o objeto novosDados e imprime no log do console. 
+<br/>
+<img src="./img-spreadoperator2.png"/>
+
+<!--Rest Operator-->
+<h1>21 - Rest Operator</h1>
+Tem similaridade com Spread operator
+<br/>
+<textarea rows="23" cols="100%">
+
+Se não colocar o rest Operator na frente da variável 
+a função vai receber somente o primeiro item
+
+Mas se colocar ... na frente do parâmetro a função 
+entende que se trata de todo os dados da lista. 
+
+Exemplo:
+
+function cadastrar(usuarios, ...novosusuarios){
+
+let totalusuarios = [
+	...usuarios,
+	...novosusuarios
+];
+
+console.log(totalusuarios);
+}
+
+let usuarios = ["matheus","joao"];
+let novosusuarios = cadastrar([...usuarios, "henrique", "Lucas"]);
+
+</textarea>
+<br/>
+<!--Operação em Array-->
+<h1>22 - Operação em Array</h1>
+A partir do Java Script ES6 não precisa de loops como for para manipular os arrays
+<br/>
+<h1>map</h1>
+<img src="./img-operacao-array.png"/>
+<br/>
+<h1>index</h1>
+no map também tem como passar um index
+<img src="./img-operacao-array1.png"/>
+<br/>
+<h1>reduce</h1>
+agente consegue somar todos os itens da lista de forma pratica
+<br/>
+<img src="./img-operacao-array2.png"/>
+<h1>find</h1>
+retorna um valor caso exista, no exemplo abaixo procura o valor 4 e devolve o valor 4 encontrado
+<br/>
+<img src="./img-operacao-array3.png"/>
+
+<br/>
+<!--Funções anônimas -->
+<h1>23 - Funções anônimas</h1>
+são funções sem Nome e simplificadas
+<br/>
+<img src="./img-funcao-anonima1.png"/>
+<br/>
+melhorando ainda mais com => (apaga function e na frente dos parametros coloca =>)
+<br/> 
+colocar "=>" é fazer função anônima
+<br>
+<img src="./img-funcao-anonima.png"/>
+<br/> 
+Reduzindo mais ainda como se trata de um linha simples de return
+<br/> 
+<img src="./img-funcao-anonima2.png"/>
+
+<br/>
+<!--Metodos includes, endWith e startsWith -->
+<h1>24 - Metodos includes, endWith e startsWith</h1>
+<h1>include</h1>
+O includes retorna true ou false verifica se o dado está na lista
+<br/>
+<img src="./img-includes.png"/>
+<br/>
+<h1>endWith</h1>
+O endWith verifica se a variável termina com o valor passado
+<br/>
+<img src="./img-endWith.png"/>
+<br/>
+<h1>startsWith</h1>
+O startsWith verifica se a variável começa com o valor passado
+<br/>
+<img src="./img-startsWith.png"/>
+<br/>
+<!--Metodos some e every -->
+<h1>24 - Metodos some e every </h1>
+<h1>some </h1>
+Some (algum) verifica se tem algum dado 
+<br/>
+<textarea rows="12" cols="100%">
+
+Função de Callback:
+
+É uma função passada para outra função como um parâmetro.
+
+exemplo:
+
+function print(callback) {  
+    callback();   // função anonima
+}
+
+</textarea>
+<img src="./img-some.png"/>
+
+<h1>every </h1>
+Every também devolve o callback mas passa por todos os índices, tipo um array de dados.
+<br/>
+no exemplo abaixo temos um array de objetos, verificando se todos são maiores de 18 anos:
+<br/>
+<img src="./img-every.png"/>
+<br/>
+A resposta é true porque todos tem idade >= 18 anos
+<br/>
+	</body>	
 </html>	
